@@ -14,7 +14,7 @@ public struct API {
     private var baseURL: URL
 
     public var jobs: Endpoint<[JobResponse]> {
-        return Endpoint(json: .get, url: baseURL.appendingPathComponent("jobs"), decoder: decoder)
+        return Endpoint(json: .get, url: baseURL.appendingPathComponent("vehicles"), decoder: decoder)
     }
 
     // MARK: - Initialization
