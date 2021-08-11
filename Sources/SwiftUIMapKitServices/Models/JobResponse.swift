@@ -1,5 +1,5 @@
 //
-//  VehicleLocation.swift
+//  JobLocation.swift
 //  SwiftUIMapKit
 //
 //  Created by Sasha Prokhorenko on 18.08.19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct VehicleResponse: Codable, Equatable {
+public struct JobResponse: Codable, Equatable {
 	// MARK: - Instance Properties
 	public let id: Int
 	public let name: String

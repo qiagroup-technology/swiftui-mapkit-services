@@ -13,8 +13,8 @@ public struct API {
 
     private var baseURL: URL
 
-    public var vehicles: Endpoint<[VehicleResponse]> {
-        return Endpoint(json: .get, url: baseURL.appendingPathComponent("vehicles"), decoder: decoder)
+    public var jobs: Endpoint<[JobResponse]> {
+        return Endpoint(json: .get, url: baseURL.appendingPathComponent("jobs"), decoder: decoder)
     }
 
     // MARK: - Initialization

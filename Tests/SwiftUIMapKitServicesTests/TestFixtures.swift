@@ -8,7 +8,7 @@
 import Foundation
 @testable import SwiftUIMapKitServices
 
-let vehicleFixtures = VehicleResponse(id: 1,
+let jobFixtures = JobResponse(id: 1,
 																			name: "000011",
 																			description: "Electric Scooter",
 																			latitude: 52.529077,
