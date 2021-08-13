@@ -11,37 +11,63 @@ import Foundation
 public struct JobResponse: Codable, Equatable {
 	// MARK: - Instance Properties
 	public let id: Int
-	public let name: String
-	public let description: String
+	public let invoiceNo: Int
+	public let propertyPlanNo: String
+	public let propertyStreetNo: String
+	public let propertyStreet: String
+	public let propertyCity: String
+	public let propertyState: String
+	public let propertyPcode: String
+	public let propertyName: String
+	public let inspector: String
+	public let itemNumber: String
+	public let deadlineDate: String
+	public let deliverIn28Days: String
+	public let onSiteContact: String
+	public let onSiteContactNo: String
+	public let contactToMeet: String
 	public let latitude: Double
 	public let longitude: Double
-	public let batteryLevel: Double
-	public let timestamp: String
-	public let price: Double
-	public let priceTime: Double
-	public let currency: String
-	
+
 	// MARK: - Initialization
-	
+
 	public init(id: Int,
-							name: String,
-							description: String,
+							invoiceNo: Int,
+							propertyPlanNo: String,
+							propertyStreetNo: String,
+							propertyStreet: String,
+							propertyCity: String,
+							propertyState: String,
+							propertyPcode: String,
+							propertyName: String,
+							inspector: String,
+							itemNumber: String,
+							deadlineDate: String,
+							deliverIn28Days: String,
+							onSiteContact: String,
+							onSiteContactNo: String,
+							contactToMeet: String,
 							latitude: Double,
-							longitude: Double,
-							batteryLevel: Double,
-							timestamp: String,
-							price: Double,
-							priceTime: Double,
-							currency: String) {
+							longitude: Double) {
+
 		self.id = id
-		self.name = name
-		self.description = description
+		self.invoiceNo = invoiceNo
+		self.propertyPlanNo = propertyPlanNo
+		self.propertyStreetNo = propertyStreetNo
+		self.propertyStreet = propertyStreet
+		self.propertyCity = propertyCity
+		self.propertyState = propertyState
+		self.propertyPcode = propertyPcode
+		self.propertyName = propertyName
+		self.inspector = inspector
+		self.itemNumber = itemNumber
+		self.deadlineDate = deadlineDate
+		self.deliverIn28Days = deliverIn28Days
+		self.onSiteContact = onSiteContact
+		self.onSiteContactNo = onSiteContactNo
+		self.contactToMeet = contactToMeet
 		self.latitude = latitude
 		self.longitude = longitude
-		self.batteryLevel = batteryLevel
-		self.timestamp = timestamp
-		self.price = price
-		self.priceTime = priceTime
-		self.currency = currency
+
 	}
 }
