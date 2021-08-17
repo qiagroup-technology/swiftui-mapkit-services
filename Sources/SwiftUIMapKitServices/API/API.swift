@@ -14,12 +14,12 @@ public struct API {
     private var baseURL: URL
 
     public var jobs: Endpoint<[JobResponse]> {
-        return Endpoint(json: .get, url: baseURL.appendingPathComponent("vehicles"), decoder: decoder)
+        return Endpoint(json: .get, url: baseURL.appendingPathComponent("jobs"), decoder: decoder)
     }
 
     // MARK: - Initialization
 
-    public init(baseURL: URL = URL(string: "https://minikin-json-server.herokuapp.com")!) {
+    public init(baseURL: URL = URL(string: "https://qialive.qiagroup.com.au:9445/inspectionreportapi/api/v1/mappinginspections")!) {
         self.baseURL = baseURL
     }
 }

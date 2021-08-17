@@ -22,10 +22,10 @@ public struct JobResponse: Codable, Equatable {
 	public let inspector: String
 	public let itemNumber: String
 	public let deadlineDate: String
-	public let deliverIn28Days: String
+	public let deliverIn28Days: Bool
 	public let onSiteContact: String
 	public let onSiteContactNo: String
-	public let contactToMeet: String
+	public let contactToMeet: Bool
 	public let latitude: Double
 	public let longitude: Double
 
@@ -43,10 +43,10 @@ public struct JobResponse: Codable, Equatable {
 							inspector: String,
 							itemNumber: String,
 							deadlineDate: String,
-							deliverIn28Days: String,
+							deliverIn28Days: Bool,
 							onSiteContact: String,
 							onSiteContactNo: String,
-							contactToMeet: String,
+							contactToMeet: Bool,
 							latitude: Double,
 							longitude: Double) {
 

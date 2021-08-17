@@ -18,26 +18,26 @@ extension URLSession {
     /// - Returns: The data task.
     public func load<A>(_ e: Endpoint<A>, onComplete: @escaping (Result<A, Error>) -> ()) -> URLSessionDataTask {
         let r = e.request
+        r.setValue("abcdefghi1234567", forHTTPHeaderField: "apikey")
         let task = dataTask(with: r, completionHandler: { data, resp, err in
             if let err = err {
                 onComplete(.failure(err))
                 return
             }
-            
+
             guard let h = resp as? HTTPURLResponse else {
                 onComplete(.failure(UnknownError()))
                 return
             }
-            
+
             guard e.expectedStatusCode(h.statusCode) else {
                 onComplete(.failure(WrongStatusCodeError(statusCode: h.statusCode, response: h)))
                 return
             }
-            
+
             onComplete(e.parse(data,resp))
         })
         task.resume()
         return task
     }
 }
-
