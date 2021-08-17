@@ -17,8 +17,10 @@ extension URLSession {
     ///   - onComplete: The completion handler.
     /// - Returns: The data task.
     public func load<A>(_ e: Endpoint<A>, onComplete: @escaping (Result<A, Error>) -> ()) -> URLSessionDataTask {
-        let r = e.request
-        r.setValue("abcdefghi1234567", forHTTPHeaderField: "apikey")
+        var req = e.request
+        req.setValue("abcdefghi1234567", forHTTPHeaderField: "apikey")
+        let r = req
+        
         let task = dataTask(with: r, completionHandler: { data, resp, err in
             if let err = err {
                 onComplete(.failure(err))
