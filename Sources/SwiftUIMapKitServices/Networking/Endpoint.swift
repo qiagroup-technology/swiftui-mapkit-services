@@ -10,7 +10,7 @@ import Foundation
 
 /// This describes an endpoint returning `A` values. It contains both a `URLRequest` and a way to parse the response.
 public struct Endpoint<A> {
-    
+
     /// The HTTP Method
     public enum Method: String {
         case get = "GET"
@@ -19,16 +19,16 @@ public struct Endpoint<A> {
         case patch = "PATCH"
         case delete = "DELETE"
     }
-    
+
     /// The request for this endpoint
     public var request: URLRequest
-    
+
     /// This is used to (try to) parse a response into an `A`.
     var parse: (Data?, URLResponse?) -> Result<A, Error>
-    
+
     /// This is used to check the status code of a response.
     var expectedStatusCode: (Int) -> Bool = expected200to300
-    
+
     /// Transforms the result
     public func map<B>(_ f: @escaping (A) -> B) -> Endpoint<B> {
         return Endpoint<B>(request: request, expectedStatusCode: expectedStatusCode, parse: { value, response in
@@ -93,8 +93,8 @@ public struct Endpoint<A> {
         self.expectedStatusCode = expectedStatusCode
         self.parse = parse
     }
-    
-    
+
+
     /// Creates a new Endpoint from a request
     ///
     /// - Parameters:
@@ -198,7 +198,20 @@ extension Endpoint where A: Decodable {
 									query: query) { data, _ in
             return Result {
                 guard let dat = data else { throw NoDataError() }
-                return try decoder.decode(A.self, from: dat)
+                ///return try decoder.decode(A.self, from: dat)
+                do {
+                      return try decoder.decode(A.self, from: dat)
+                    } catch DecodingError.keyNotFound(let key, let context) {
+                       Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
+                   } catch DecodingError.valueNotFound(let type, let context) {
+                       Swift.print("could not find type \(type) in JSON: \(context.debugDescription)")
+                   } catch DecodingError.typeMismatch(let type, let context) {
+                       Swift.print("type mismatch for type \(type) in JSON: \(context.debugDescription)")
+                   } catch DecodingError.dataCorrupted(let context) {
+                       Swift.print("data found to be corrupted in JSON: \(context.debugDescription)")
+                   } catch let error as NSError {
+                       NSLog("Error in read(from:ofType:) domain= \(error.domain), description= \(error.localizedDescription)")
+                   }
             }
         }
     }
