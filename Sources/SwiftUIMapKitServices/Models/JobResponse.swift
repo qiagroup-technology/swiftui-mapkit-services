@@ -23,8 +23,8 @@ public struct JobResponse: Codable, Equatable {
 	public let itemNumber: String
 	public let deadlineDate: String
 	public let deliverIn28Days: Bool
-	public let onSiteContact: String
-	public let onSiteContactNo: String
+	public let onSiteContact: String?
+	public let onSiteContactNo: String?
 	public let contactToMeet: Bool
 	public let latitude: Double
 	public let longitude: Double
