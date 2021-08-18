@@ -199,9 +199,9 @@ extension Endpoint where A: Decodable {
             return Result {
                 guard let dat = data else { throw NoDataError() }
                 ///return try decoder.decode(A.self, from: dat)
-
+                var decodedResponse = ""
                 do {
-                      return try decoder.decode(A.self, from: dat)
+                      decodedResponse = try decoder.decode(A.self, from: dat)
                     } catch DecodingError.keyNotFound(let key, let context) {
                        Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
                    } catch DecodingError.valueNotFound(let type, let context) {
@@ -213,7 +213,7 @@ extension Endpoint where A: Decodable {
                    } catch let error as NSError {
                        NSLog("Error in read(from:ofType:) domain= \(error.domain), description= \(error.localizedDescription)")
                    }
-                   return
+                   return decodedResponse
             }
         }
     }
