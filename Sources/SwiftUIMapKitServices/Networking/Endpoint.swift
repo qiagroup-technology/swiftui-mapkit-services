@@ -212,7 +212,7 @@ extension Endpoint where A: Decodable {
                    } catch let error as NSError {
                        NSLog("Error in read(from:ofType:) domain= \(error.domain), description= \(error.localizedDescription)")
                    }
-                   return decodedResponse
+                   return
             }
         }
     }
