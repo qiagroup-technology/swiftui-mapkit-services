@@ -14,7 +14,7 @@ public struct API {
     private var baseURL: URL
 
     public var jobs: Endpoint<[JobResponse]> {
-        return Endpoint(json: .get, url: baseURL.appendingPathComponent("jobs), decoder: decoder)
+        return Endpoint(json: .get, url: baseURL.appendingPathComponent("jobs"), decoder: decoder)
     }
     public var inspectors: Endpoint<[InspectorResponse]> {
         return Endpoint(json: .get, url: baseURL.appendingPathComponent("inspectors"), decoder: decoder)
