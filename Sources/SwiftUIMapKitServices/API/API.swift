@@ -12,14 +12,16 @@ public struct API {
     // MARK: - Instance Properties
 
     private var baseURL: URL
+    private var selectedPath: String
 
     public var jobs: Endpoint<[JobResponse]> {
-        return Endpoint(json: .get, url: baseURL.appendingPathComponent("jobs"), decoder: decoder)
+        return Endpoint(json: .get, url: baseURL.appendingPathComponent(selectedPath), decoder: decoder)
     }
 
     // MARK: - Initialization
 
-    public init(baseURL: URL = URL(string: "https://qialive.qiagroup.com.au:9445/inspectionreportapi/api/v1/mappinginspections")!) {
+    public init(baseURL: URL, selectedPath: String) {
         self.baseURL = baseURL
+        self.selectedPath = selectedPath
     }
 }
