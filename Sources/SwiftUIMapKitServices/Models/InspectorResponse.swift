@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct InspectorResponse: Codable, Equatable {
+public struct InspectorResponse: Codable, Equatable, Identifiable {
 	// MARK: - Instance Properties
 	public let id: Int
 	public let name: String
